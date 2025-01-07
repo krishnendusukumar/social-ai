@@ -17,7 +17,6 @@ async function main() {
         })
     }
     catch (err) {
-
         console.log("Erorr sending default categories", err)
 
     }
