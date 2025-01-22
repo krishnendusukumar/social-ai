@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearchPostgres"]
 }
 
 datasource db {
@@ -18,9 +19,9 @@ model companion {
   userid      String
   username    String
   src         String
-  name        String
+  name        String @db.Text //longer text enabled
   description String
-  instruction String
+  instruction String @db.Text
   seed        String @db.Text
 
   createdAt DateTime @default(now())
@@ -31,5 +32,4 @@ model companion {
   // Full-text search requires raw SQL for PostgreSQL
 
   @@index([categoryId])
-  @@index([name]) // Add a normal index for the `name` field
 }
